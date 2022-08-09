@@ -2,6 +2,8 @@ library(surveyDQ)
 
 issp2020 <- load_dataset()
 
+save(issp2020, file = "issp2020.rda")
+
 issp2020 %>%
   mutate(flag=flag_missing(., Q4:Q8, ratio=0.1)) %>%
   select(flag) %>%

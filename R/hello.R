@@ -1,22 +1,3 @@
-# Hello, world!
-#
-# This is an example function named 'hello'
-# which prints 'Hello, world!'.
-#
-# You can learn more about package authoring with RStudio at:
-#
-#   http://r-pkgs.had.co.nz/
-#
-# Some useful keyboard shortcuts for package authoring:
-#
-#   Install Package:           'Ctrl + Shift + B'
-#   Check Package:             'Ctrl + Shift + E'
-#   Test Package:              'Ctrl + Shift + T'
-
-hello <- function() {
-  print("Hello, world!")
-}
-
 connect_to_LimeRick <- function(user, password) {
   install.packages('LimeRick', repos = NULL, type="source")
 
@@ -136,7 +117,7 @@ flag_midpoints <-function(data, vars2, midpoint=3, ratio2=0.5){
 #' @examples
 #'
 #' @export
-#' @import dplyr
+#' @import dplyr careless
 #'
 flag_straight <-function(data, vars3){
   data %>%
