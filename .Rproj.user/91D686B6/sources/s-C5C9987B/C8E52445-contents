@@ -162,7 +162,7 @@ create_flag_threshold<-function(data, var, threshold_data) {
 #' @examples
 #'
 #' @export
-#' @import dplyr
+#' @import dplyr tidyr
 #'
 flag_times<-function(data, threshold_file, ratio=0.1) {
   question_chars<-read_csv(threshold_file)
