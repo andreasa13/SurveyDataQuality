@@ -60,7 +60,7 @@ load_dataset <- function(){
 #' @examples
 #'
 #' @export
-#' @import dplyr
+#' @import dplyr magrittr
 #'
 flag_missing <-function(data, vars, ratio=0.33){
   data %>%
@@ -69,8 +69,6 @@ flag_missing <-function(data, vars, ratio=0.33){
     mutate(fl_missing=if_else(missing_mean>ratio, 1, 0)) %>%
     select(fl_missing) %>%
     pull()
-
-  return(data)
 }
 
 is_midpoint<-function(x, midpoint=3) {
