@@ -1,0 +1,6 @@
+exportPattern("^[[:alpha:]]+")
+import(readr)
+import(dplyr)
+import(tidyverse)
+import(devtools)
+import(careless)
