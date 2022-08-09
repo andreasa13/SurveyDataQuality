@@ -2,7 +2,7 @@ library(surveyDQ)
 
 issp2020 <- load_dataset()
 
-save(issp2020, file = "issp2020.rda")
+# save(issp2020, file = "issp2020.rda")
 
 issp2020 %>%
   mutate(flag=flag_missing(., Q4:Q8, ratio=0.1)) %>%
@@ -31,3 +31,4 @@ issp2020 %>%
   mutate(flag=flag_times(., "question-chars.csv", 0.2)) %>%
   select(flag) %>%
   count(flag)
+

@@ -12,8 +12,6 @@ LazyData: true
 Imports: 
     dplyr,
     readr,
-    tidyverse,
-    devtools,
     careless
 Remotes: ryentes/careless
 RoxygenNote: 7.1.1
