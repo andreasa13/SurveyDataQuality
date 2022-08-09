@@ -13,7 +13,8 @@ Imports:
     dplyr,
     readr,
     careless,
-    magrittr
+    magrittr,
+    stringr
 Remotes: ryentes/careless
 RoxygenNote: 7.1.1
 Suggests: 
