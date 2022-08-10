@@ -1,11 +1,11 @@
 {
     "id": "BFBB2BAE",
-    "path": null,
+    "path": "~/Documents/RProjects/Scripts/sdq1.R",
     "project_path": null,
     "type": "r_source",
     "hash": "0",
     "contents": "",
-    "dirty": true,
+    "dirty": false,
     "created": 1660050503874.0,
     "source_on_save": false,
     "relative_order": 6,
@@ -15,11 +15,11 @@
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": -3910666736259678793,
-    "encoding": "",
+    "lastKnownWriteTime": 1660072599,
+    "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1660065345789,
+    "last_content_update": 1660072599536,
     "read_only": false,
     "read_only_alternatives": []
 }

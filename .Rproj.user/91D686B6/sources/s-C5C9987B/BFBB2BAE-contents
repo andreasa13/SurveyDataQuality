@@ -9,7 +9,7 @@ issp2020 %>%
   select(flag) %>%
   count(flag)
 
-vars<-issp2020 %>% select(Q1a_1, Q1a_2, Q3a_1, Q3a_2, Q4:Q8,  Q10_a:Q10_e, 
+vars<-issp2020 %>% select(Q1a_1, Q1a_2, Q3a_1, Q3a_2, Q4:Q8,  Q10_a:Q10_e,
                           Q10_f:Q12_e, Q12_f:Q22_c) %>% names()
 
 issp2020 %>%
