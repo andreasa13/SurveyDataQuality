@@ -1,63 +1,12 @@
-connect_to_LimeRick <- function(user, password) {
-  install.packages('LimeRick', repos = NULL, type="source")
-
-  # set link to the LimeSurvey API on the demo remote server
-  options(lsAPIurl = 'https://get.epoll.eu/index.php/admin/remotecontrol')
-
-  # set LimeSurvey user login data for survey testing purposes
-  options(lsUser = user)
-  options(lsPass = password)
-
-  # low-level API call
-  #lsAPI(method = "release_session_key")
-  # API call using a wrapper function
-  lsSessionKey("release")
-  sessionKey<-lsSessionKey("set")
-  return(sessionKey)
-
-}
-
-get_responses <- function(){
-  # install.packages("dplyr")
-  lsGetSummary(675392)
-  lsGetProperties('survey', 675392)$active
-  questionList<-lsList("questions", 675392)
-  questions<-questionList %>%
-    as_tibble()
-  return(questions)
-
-}
-
-
-
-#' @title load_dataset
-#'
-#' @description Load internal dataset for testing
-#'
-#' @param dataset A data set object
-#'
-#' @return A data frame object in the form of a list
-#' @examples
-#' load_dataset()
-#' @export
-#' @import dplyr readr
-#'
-load_dataset <- function(){
-  issp2020<-read_csv("issp2020.csv")
-  return(issp2020)
-}
-
 #' @title flag_missing
 #'
 #' @description ...
 #'
-#' @param data A data set object
-#' @param vars A data set object
-#' @param ratio A data set object
+#' @param data A tibble
+#' @param vars Any expression that can be used with dplyr::select
+#' @param ratio Any number between 0 and 1 (if not provided, its default value is 0.33)
 #'
-#' @return ...
-#'
-#' @examples
+#' @return A binary vector
 #'
 #' @export
 #' @import dplyr magrittr
@@ -76,28 +25,26 @@ is_midpoint<-function(x, midpoint=3) {
 }
 
 
-#' @title flag_missing
+#' @title flag_midpoints
 #'
 #' @description ...
 #'
-#' @param data A data set object
-#' @param vars2 A data set object
-#' @param midpoint A data set object
-#' @param ratio2 A data set object
+#' @param data A tibble (or a compatible data structure)
+#' @param vars Any expression that can be used with dplyr::select
+#' @param midpoint An integer (if not provided, its default value is 3)
+#' @param ratio Any number between 0 and 1 (if not provided, its default value is 0.5)
 #'
 #' @return ...
-#'
-#' @examples
 #'
 #' @export
 #' @import dplyr
 #'
-flag_midpoints <-function(data, vars2, midpoint=3, ratio2=0.5){
+flag_midpoints <-function(data, vars, midpoint=3, ratio=0.5){
   data %>%
-    select({{vars2}}) %>%
+    select({{vars}}) %>%
     mutate(across(everything(), ~is_midpoint(.x, midpoint))) %>%
     mutate(midpoints_mean=rowMeans(., na.rm = TRUE))%>%
-    mutate(fl_midpoint=if_else(midpoints_mean>ratio2, 1, 0)) %>%
+    mutate(fl_midpoint=if_else(midpoints_mean>ratio, 1, 0)) %>%
     select(fl_midpoint) %>%
     pull()
 }
@@ -107,19 +54,19 @@ flag_midpoints <-function(data, vars2, midpoint=3, ratio2=0.5){
 #'
 #' @description ...
 #'
-#' @param data ...
-#' @param vars3 ...
+#' @param data A tibble (or a compatible data structure)
+#' @param vars Any expression that can be used with dplyr::select
+#' and it should correspond to the items that have been displayed
+#' to respondents as a grid question
 #'
 #' @return ...
-#'
-#' @examples
 #'
 #' @export
 #' @import dplyr careless
 #'
-flag_straight <-function(data, vars3){
+flag_straight <-function(data, vars){
   data %>%
-    select({{vars3}}) %>%
+    select({{vars}}) %>%
     mutate(straight_lining=longstring(.)== ncol(.)) %>%
     mutate(fl_straight=if_else(straight_lining, 1, 0)) %>%
     select(fl_straight) %>%
@@ -127,20 +74,6 @@ flag_straight <-function(data, vars3){
 }
 
 
-#' @title create_flag_threshold
-#'
-#' @description ...
-#'
-#' @param data ...
-#' @param vars3 ...
-#'
-#' @return ...
-#'
-#' @examples
-#'
-#' @export
-#' @import dplyr
-#'
 create_flag_threshold<-function(data, var, threshold_data) {
   th<-threshold_data %>%
     select({{var}}) %>%
@@ -154,12 +87,11 @@ create_flag_threshold<-function(data, var, threshold_data) {
 #'
 #' @description ...
 #'
-#' @param data ...
-#' @param vars3 ...
+#' @param data A tibble
+#' @param threshold_file The name of the file with variable names, number of characters and number of subquestions
+#' @param ratio can by any number between 0 and 1
 #'
 #' @return ...
-#'
-#' @examples
 #'
 #' @export
 #' @import dplyr tidyr stringr
