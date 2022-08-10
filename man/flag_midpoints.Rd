@@ -2,7 +2,7 @@
 % Please edit documentation in R/functions.R
 \name{flag_midpoints}
 \alias{flag_midpoints}
-\title{flag_midpoint}
+\title{flag_midpoints}
 \usage{
 flag_midpoints(data, vars, midpoint = 3, ratio = 0.5)
 }
