@@ -1,10 +1,10 @@
 #' @title flag_missing
 #'
-#' @description ...
+#' @description flag_missing uses three arguments: data, vars and ratio (if not provided, its default value is 0.33) and it creates a binary vector.
 #'
 #' @param data A tibble
 #' @param vars Any expression that can be used with dplyr::select
-#' @param ratio Any number between 0 and 1 (if not provided, its default value is 0.33)
+#' @param ratio Any number between 0 and 1 (if not provided, its default value is 0.33).
 #'
 #' @return A binary vector
 #'
@@ -27,14 +27,14 @@ is_midpoint<-function(x, midpoint=3) {
 
 #' @title flag_midpoints
 #'
-#' @description ...
+#' @description flag_ midpoint uses four arguments: data, vars, midpoint (if not provided, its default value is 3) and ratio (if not provided, its default value is 0.5)  and it creates a binary vector.
 #'
 #' @param data A tibble (or a compatible data structure)
 #' @param vars Any expression that can be used with dplyr::select
 #' @param midpoint An integer (if not provided, its default value is 3)
 #' @param ratio Any number between 0 and 1 (if not provided, its default value is 0.5)
 #'
-#' @return ...
+#' @return A binary vector
 #'
 #' @export
 #' @import dplyr
@@ -52,14 +52,14 @@ flag_midpoints <-function(data, vars, midpoint=3, ratio=0.5){
 
 #' @title flag_straight
 #'
-#' @description ...
+#' @description flag_ straight uses two arguments: data, and vars and it creates a binary vector.
 #'
 #' @param data A tibble (or a compatible data structure)
 #' @param vars Any expression that can be used with dplyr::select
 #' and it should correspond to the items that have been displayed
 #' to respondents as a grid question
 #'
-#' @return ...
+#' @return A binary vector
 #'
 #' @export
 #' @import dplyr careless
@@ -85,13 +85,13 @@ create_flag_threshold<-function(data, var, threshold_data) {
 
 #' @title flag_times
 #'
-#' @description ...
+#' @description flag_time uses three arguments: data, threshold_file and ratio (if not provided, its default value is 0.1) and it creates a binary vector.
 #'
 #' @param data A tibble
 #' @param threshold_file The name of the file with variable names, number of characters and number of subquestions
 #' @param ratio can by any number between 0 and 1
 #'
-#' @return ...
+#' @return A binary vector
 #'
 #' @export
 #' @import dplyr tidyr stringr
