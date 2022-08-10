@@ -16,8 +16,8 @@ flag_midpoints(data, vars, midpoint = 3, ratio = 0.5)
 \item{ratio}{Any number between 0 and 1 (if not provided, its default value is 0.5)}
 }
 \value{
-...
+A binary vector
 }
 \description{
-...
+flag_ midpoint uses four arguments: data, vars, midpoint (if not provided, its default value is 3) and ratio (if not provided, its default value is 0.5)  and it creates a binary vector.
 }

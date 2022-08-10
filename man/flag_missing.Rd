@@ -11,11 +11,11 @@ flag_missing(data, vars, ratio = 0.33)
 
 \item{vars}{Any expression that can be used with dplyr::select}
 
-\item{ratio}{Any number between 0 and 1 (if not provided, its default value is 0.33)}
+\item{ratio}{Any number between 0 and 1 (if not provided, its default value is 0.33).}
 }
 \value{
 A binary vector
 }
 \description{
-...
+flag_missing uses three arguments: data, vars and ratio (if not provided, its default value is 0.33) and it creates a binary vector.
 }

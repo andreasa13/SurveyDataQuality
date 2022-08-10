@@ -14,8 +14,8 @@ and it should correspond to the items that have been displayed
 to respondents as a grid question}
 }
 \value{
-...
+A binary vector
 }
 \description{
-...
+flag_ straight uses two arguments: data, and vars and it creates a binary vector.
 }

@@ -14,8 +14,8 @@ flag_times(data, threshold_file, ratio = 0.1)
 \item{ratio}{can by any number between 0 and 1}
 }
 \value{
-...
+A binary vector
 }
 \description{
-...
+flag_time uses three arguments: data, threshold_file and ratio (if not provided, its default value is 0.1) and it creates a binary vector.
 }
