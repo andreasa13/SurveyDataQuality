@@ -158,7 +158,7 @@ of missing values have zeros
 ``` r
 # flag cases with many midpoints
 issp2020 %>%
- mutate(flag=flag_midpoints(., Q10_a:Q12_g, midpoint=3, ratio2=0.5))%>%
+ mutate(flag=flag_midpoints(., Q10_a:Q12_g, midpoint=3, ratio=0.5))%>%
   filter(flag==1) %>%
   select(id, Q10_a:Q12_g)
 #> # A tibble: 1 × 23
@@ -345,7 +345,7 @@ of the four quality checks we have applied:
 ``` r
 issp2020 %>%
   mutate(flag_missing=flag_missing(., Q4:Q8, ratio=0.1)) %>%  
-  mutate(flag_midpoints=flag_midpoints(., Q10_a:Q12_g, midpoint=3, ratio2=0.33)) %>%
+  mutate(flag_midpoints=flag_midpoints(., Q10_a:Q12_g, midpoint=3, ratio=0.33)) %>%
   mutate(flag_straight=flag_straight(., Q13_g:Q13_e)) %>%
   mutate(flag_times=flag_times(., "http://www.datapopeu.gr/question-chars.csv", 0.2))%>%
   mutate(sum_flags = flag_missing+ flag_midpoints+ flag_straight+flag_times) %>%
