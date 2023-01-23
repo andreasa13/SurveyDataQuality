@@ -107,7 +107,7 @@ flag_times<-function(data, threshold_file, ratio=0.1) {
   vars<-names(thresholds)
   flag<-data %>%
     select(vars) %>%
-    mutate(across(everything(), ~create_flag_threshold(issp2020, .x, thresholds))) %>%
+    mutate(across(everything(), ~create_flag_threshold(data, .x, thresholds))) %>%
     mutate(n_speeding=rowSums(., na.rm = TRUE))%>%
     mutate(p_speeding=n_speeding/ ncol(.)) %>%
     mutate(fl_speeding=if_else(p_speeding>ratio, 1, 0)) %>%
